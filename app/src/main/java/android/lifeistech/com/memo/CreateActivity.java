@@ -39,6 +39,7 @@ public class CreateActivity extends AppCompatActivity {
                 memo.title = title;
                 memo.updateDate = updateDate;
                 memo.content = content;
+                memo.checked = false;
             }
         });
     }

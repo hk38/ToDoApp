@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.List;
@@ -29,9 +30,11 @@ public class MemoAdapter extends ArrayAdapter<Memo> {
 
         TextView titleText = (TextView) convertView.findViewById(R.id.titleText);
         TextView contentText = (TextView) convertView.findViewById(R.id.contentText);
+        CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.itemCheckBox);
 
         titleText.setText(memo.title);
         contentText.setText(memo.content);
+        checkBox.setChecked(memo.checked);
 
         return convertView;
     }

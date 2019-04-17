@@ -3,6 +3,7 @@ package android.lifeistech.com.memo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import io.realm.Realm;
@@ -13,6 +14,7 @@ public class DetailActivity extends AppCompatActivity {
 
     public EditText titleText;
     public EditText contentText;
+    public CheckBox checkBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,7 @@ public class DetailActivity extends AppCompatActivity {
 
         titleText = (EditText) findViewById(R.id.titleEditText);
         contentText = (EditText) findViewById(R.id.contentEditText);
+        checkBox = (CheckBox) findViewById(R.id.detailCheckBox);
 
         showData();
     }
@@ -32,6 +35,7 @@ public class DetailActivity extends AppCompatActivity {
 
         titleText.setText(memo.title);
         contentText.setText(memo.content);
+        checkBox.setChecked(memo.checked);
     }
 
     public void update(View v){
@@ -42,6 +46,7 @@ public class DetailActivity extends AppCompatActivity {
             public void execute(Realm realm){
                 memo.title = titleText.getText().toString();
                 memo.content = contentText.getText().toString();
+                memo.checked = checkBox.isChecked();
             }
         });
 
@@ -50,6 +55,15 @@ public class DetailActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+        final Memo memo = realm.where(Memo.class).equalTo("updateDate", getIntent().getStringExtra("updateDate")).findFirst();
+
+        realm.executeTransaction(new Realm.Transaction(){
+            @Override
+            public void execute(Realm realm){
+                memo.checked = checkBox.isChecked();
+            }
+        });
+
         super.onDestroy();
         realm.close();
     }
