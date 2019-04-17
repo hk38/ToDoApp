@@ -44,6 +44,8 @@ public class DetailActivity extends AppCompatActivity {
                 memo.content = contentText.getText().toString();
             }
         });
+
+        finish();
     }
 
     @Override
