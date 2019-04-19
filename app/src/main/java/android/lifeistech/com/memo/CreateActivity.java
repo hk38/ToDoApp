@@ -2,7 +2,6 @@ package android.lifeistech.com.memo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -32,7 +31,6 @@ public class CreateActivity extends AppCompatActivity {
 
     public void save(final String title, final String updateDate, final String content){
         realm.executeTransaction(new Realm.Transaction(){
-
             @Override
             public void execute(Realm bgRealm){
                 Memo memo = realm.createObject(Memo.class);
@@ -59,6 +57,7 @@ public class CreateActivity extends AppCompatActivity {
         finish();
     }
 
+    /*
     private void check(String title, String updateDate, String content){
         Memo memo = new Memo();
 
@@ -70,7 +69,7 @@ public class CreateActivity extends AppCompatActivity {
         Log.d("Memo", memo.updateDate);
         Log.d("Memo", memo.content);
     }
-
+    */
 
     @Override
     protected void onDestroy() {

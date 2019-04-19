@@ -54,7 +54,9 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
+    public void onPause(){
+        super.onPause();
+
         final Memo memo = realm.where(Memo.class).equalTo("updateDate", getIntent().getStringExtra("updateDate")).findFirst();
 
         realm.executeTransaction(new Realm.Transaction(){
@@ -63,7 +65,10 @@ public class DetailActivity extends AppCompatActivity {
                 memo.checked = checkBox.isChecked();
             }
         });
+    }
 
+    @Override
+    protected void onDestroy() {
         super.onDestroy();
         realm.close();
     }
