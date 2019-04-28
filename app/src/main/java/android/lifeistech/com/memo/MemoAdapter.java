@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -62,6 +61,8 @@ public class MemoAdapter extends ArrayAdapter<Memo> {
                 realm.close();
             }
         });
+
+
 
         TextView titleText = (TextView) convertView.findViewById(R.id.titleText);
         TextView contentText = (TextView) convertView.findViewById(R.id.contentText);

@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ListView list = (ListView) parent;
                 Memo memo = (Memo) parent.getItemAtPosition(position);
-                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                Intent intent = new Intent(MainActivity.this, selectActivity.class);
                 intent.putExtra("updateDate", memo.updateDate);
                 startActivity(intent);
             }

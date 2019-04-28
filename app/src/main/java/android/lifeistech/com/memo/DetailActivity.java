@@ -1,5 +1,6 @@
 package android.lifeistech.com.memo;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -49,6 +50,9 @@ public class DetailActivity extends AppCompatActivity {
                 memo.checked = checkBox.isChecked();
             }
         });
+
+        Intent intent = new Intent(DetailActivity.this, MainActivity.class);
+        startActivity(intent);
 
         finish();
     }
